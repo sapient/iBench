@@ -1,0 +1,11 @@
+# Item Localizations
+item.ibench:ibench.name=iBench
+
+# Block Localizations
+tile.ibench:ibench.name=iBench+
+
+# Creative tab Localization
+itemGroup.ibench=iBench
+
+# Misc stuff
+crafting.iBench=iBench
