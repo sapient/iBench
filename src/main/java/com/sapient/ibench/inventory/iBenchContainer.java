@@ -28,14 +28,12 @@ public class iBenchContainer extends Container {
         this.craftingResult = new InventoryCraftResult();
 
         // Crafting output slot
-//        this.addSlotToContainer(new SlotIBenchCrafting(player, craftingMatrix, craftingResult, 0, 80, 44));
-        this.addSlotToContainer(new SlotIBenchCrafting(player, craftingMatrix, craftingResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotIBenchCrafting(player, craftingMatrix, craftingResult, 0, 80, 44));
 
         // Crafting Grid
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-//                this.addSlotToContainer(new SlotIBench(player, craftingMatrix, j + i * 3, 17 + j * 18, 17 + i * 18));
-                this.addSlotToContainer(new SlotIBench(player, craftingMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+                this.addSlotToContainer(new SlotIBench(player, craftingMatrix, j + i * 3, 17 + j * 18, 17 + i * 18));
             }
         }
 
@@ -49,14 +47,12 @@ public class iBenchContainer extends Container {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-                        8 + j * 18, 84 + i * 18));
-//                        8 + j * 18, 88 + i * 18));
+                        8 + j * 18, 88 + i * 18));
             }
         }
 
         for (int i = 0; i < 9; i++) {
-//            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 146));
-            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 146));
         }
     }
 

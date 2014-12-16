@@ -28,8 +28,7 @@ public class iBenchGui extends GuiContainer {
         this.player = container.getPlayer();
         this.container = container;
         xSize = 176;
-        ySize = 166;
-//        ySize = 169;
+        ySize = 169;
     }
 
     @Override
@@ -39,13 +38,9 @@ public class iBenchGui extends GuiContainer {
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
 
-        this.buttonList.add(this.balanceButton = new iBenchButton(1, xStart + 10, yStart + 16, 11, 16, iBenchButton.BALANCE));
-        this.buttonList.add(this.spinButton = new iBenchButton(2, xStart + 10, yStart + 32, 11, 11, iBenchButton.SPIN));
-        this.buttonList.add(this.clearButton = new iBenchButton(3, xStart + 10, yStart + 48, 11, 11, iBenchButton.EMPTY));
-
-//        this.buttonList.add(this.balanceButton = new iBenchButton(1, xStart + 21, yStart + 73, 11, 11, iBenchButton.BALANCE));
-//        this.buttonList.add(this.spinButton    = new iBenchButton(2, xStart + 37, yStart + 73, 11, 11, iBenchButton.SPIN));
-//        this.buttonList.add(this.clearButton   = new iBenchButton(3, xStart + 53, yStart + 73, 11, 11, iBenchButton.EMPTY));
+        this.buttonList.add(this.balanceButton = new iBenchButton(1, xStart + 21, yStart + 73, 11, 11, iBenchButton.BALANCE));
+        this.buttonList.add(this.spinButton    = new iBenchButton(2, xStart + 37, yStart + 73, 11, 11, iBenchButton.SPIN));
+        this.buttonList.add(this.clearButton   = new iBenchButton(3, xStart + 53, yStart + 73, 11, 11, iBenchButton.EMPTY));
     }
 
 
