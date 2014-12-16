@@ -87,7 +87,7 @@ public class iBenchContainer extends Container {
     public ItemStack slotClick(int slotIndex, int par2, int par3, EntityPlayer entityPlayer) {
         if (slotIndex >= 0 && slotIndex <= inventoryItemStacks.size()) {
             ItemStack clickedStack = (ItemStack) inventoryItemStacks.get(slotIndex);
-            if (clickedStack != null && clickedStack.getItem() instanceof ItemIBench && NBTHelper.getUUID(clickedStack).equals(NBTHelper.getUUID(craftingMatrix.parent))) {
+            if (clickedStack != null && clickedStack.getItem() instanceof ItemIBench && NBTHelper.hasUUID(clickedStack) && NBTHelper.getUUID(clickedStack).equals(NBTHelper.getUUID(craftingMatrix.parent))) {
                 return null;
             }
         }
