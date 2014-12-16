@@ -23,6 +23,16 @@ public class NBTHelper {
         }
     }
 
+    public static UUID getUUID(ItemStack itemStack) {
+        initNBTCompound(itemStack);
+
+        if (hasUUID(itemStack)) {
+            return new UUID(itemStack.getTagCompound().getLong(Names.NBT.MOST_SIG_UUID),
+                    itemStack.getTagCompound().getLong(Names.NBT.LEAST_SIG_UUID));
+        }
+        return null;
+    }
+
     public static void initNBTCompound(ItemStack itemStack) {
         if (itemStack.stackTagCompound == null) {
             itemStack.setTagCompound(new NBTTagCompound());

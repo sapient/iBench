@@ -1,5 +1,7 @@
 package com.sapient.ibench.inventory;
 
+import com.sapient.ibench.items.ItemIBench;
+import com.sapient.ibench.util.NBTHelper;
 import com.sapient.ibench.util.StackHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -85,6 +87,18 @@ public class iBenchContainer extends Container {
         }
     }
 
+    @Override
+    public ItemStack slotClick(int slotIndex, int par2, int par3, EntityPlayer entityPlayer) {
+        if (slotIndex >= 0 && slotIndex <= inventoryItemStacks.size()) {
+            ItemStack clickedStack = (ItemStack) inventoryItemStacks.get(slotIndex);
+            if (clickedStack != null && NBTHelper.getUUID(clickedStack).equals(NBTHelper.getUUID(craftingMatrix.parent))) {
+                return null;
+            }
+        }
+
+        return super.slotClick(slotIndex, par2, par3, entityPlayer);
+    }
+
     /**
      * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
      *
@@ -110,16 +124,6 @@ public class iBenchContainer extends Container {
                 // I dont really understand what this is doing, at this point the stacks should be identical
                 fromSlot.onSlotChange(itemStack1, itemStack);
             }
-
-//            else if (itemStack.getItem() instanceof ItemIBench) {
-//                if (slotIndex <= 10 + SIZE_PLAYER_INVENTORY) {
-//                    if (!this.mergeItemStack(itemStack, 10, 46, false)) {
-//                        return null;
-//                    }
-//                } else {
-//                    return null;
-//                }
-//            }
 
             // Move from the matrix into the inventory
             else if (slotIndex >= 1 && slotIndex <= 9) {
