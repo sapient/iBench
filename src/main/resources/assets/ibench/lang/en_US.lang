@@ -1,5 +1,6 @@
 # Item Localizations
 item.ibench:ibench.name=iBench
+item.ibench:blueprints.name=Blueprints
 
 # Block Localizations
 tile.ibench:ibench.name=iBench+

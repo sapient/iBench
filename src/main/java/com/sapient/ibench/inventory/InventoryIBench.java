@@ -1,5 +1,6 @@
 package com.sapient.ibench.inventory;
 
+import com.sapient.ibench.items.ItemIBench;
 import com.sapient.ibench.reference.Names;
 import com.sapient.ibench.util.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +34,6 @@ public class InventoryIBench extends InventoryCrafting {
 
         readFromNBT(parent.getTagCompound());
     }
-
 
     public void setEventHandler(Container eventHandler) {
         this.eventHandler = eventHandler;
@@ -175,16 +175,6 @@ public class InventoryIBench extends InventoryCrafting {
         //
     }
 
-    /**
-     * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
-     *
-     * @param p_94041_1_
-     * @param p_94041_2_
-     */
-    @Override
-    public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
-        return true;
-    }
 
     public void onGuiSaved(EntityPlayer entityPlayer) {
         if (parent != null)
@@ -210,17 +200,20 @@ public class InventoryIBench extends InventoryCrafting {
     }
 
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
-        nbtTagCompound = findParentItemStack(player).getTagCompound();
+        parent = findParentItemStack(player);
+        if (parent != null) {
+            nbtTagCompound = parent.getTagCompound();
 
-        if (nbtTagCompound != null && nbtTagCompound.hasKey("Items")) {
-            NBTTagList tagList = nbtTagCompound.getTagList("Items", 10);
-            this.inventory = new ItemStack[this.getSizeInventory()];
+            if (nbtTagCompound != null && nbtTagCompound.hasKey("Items")) {
+                NBTTagList tagList = nbtTagCompound.getTagList("Items", 10);
+                this.inventory = new ItemStack[this.getSizeInventory()];
 
-            for (int i = 0; i < tagList.tagCount(); i++) {
-                NBTTagCompound stackTag = tagList.getCompoundTagAt(i);
-                int j = stackTag.getByte("Slot");
-                if (i >= 0 && i <= inventory.length) {
-                    this.inventory[j] = ItemStack.loadItemStackFromNBT(stackTag);
+                for (int i = 0; i < tagList.tagCount(); i++) {
+                    NBTTagCompound stackTag = tagList.getCompoundTagAt(i);
+                    int j = stackTag.getByte("Slot");
+                    if (i >= 0 && i <= inventory.length) {
+                        this.inventory[j] = ItemStack.loadItemStackFromNBT(stackTag);
+                    }
                 }
             }
         }
