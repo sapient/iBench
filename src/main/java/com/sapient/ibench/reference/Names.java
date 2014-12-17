@@ -4,6 +4,7 @@ public class Names {
     public static class Items {
         public static final String I_BENCH = "iBench";
         public static final String BLUEPRINTS = "Blueprints";
+        public static final String CRAFTING_CORE = "Crafting Core";
     }
 
     public static class Containers {

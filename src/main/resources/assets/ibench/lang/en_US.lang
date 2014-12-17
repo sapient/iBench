@@ -1,9 +1,9 @@
 # Item Localizations
 item.ibench:ibench.name=iBench
+item.ibench:ibench_plus.name=iBench Plus
 item.ibench:blueprints.name=Blueprints
-
-# Block Localizations
-tile.ibench:ibench.name=iBench+
+item.ibench:crafting_core.name=Crafting Core
+item.ibench:crafting_core_plus.name=Crafting Core Plus
 
 # Creative tab Localization
 itemGroup.ibench=iBench
