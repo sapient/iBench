@@ -41,9 +41,6 @@ public class iBench {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-//        ConfigHandler.init( event.getSuggestedConfigurationFile() );
-//        FMLCommonHandler.instance().bus().register( new ConfigHandler() );
-
         PacketHandler.init();
 
         ModItems.init();
