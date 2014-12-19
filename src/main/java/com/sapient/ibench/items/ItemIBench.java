@@ -20,11 +20,6 @@ import java.util.List;
 
 public class ItemIBench extends ItemCore {
 
-    private static String fwd = GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindForward.getKeyCode());
-    private static String back = GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindBack.getKeyCode());
-    private static String left = GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindLeft.getKeyCode());
-    private static String right = GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindRight.getKeyCode());
-
     private IIcon[] icons;
 
     public ItemIBench() {
@@ -121,9 +116,9 @@ public class ItemIBench extends ItemCore {
         EnumChatFormatting hl = EnumChatFormatting.WHITE;
         EnumChatFormatting rst = EnumChatFormatting.GRAY;
         
-        list.add(hl + fwd + rst + " key to balance stacks");
-        list.add(hl + back + rst + " key to clear the grid");
-        list.add(hl + left + rst + " and " + hl + right + rst + " keys to spin");
+        list.add(hl + GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindForward.getKeyCode()) + rst + " key to balance stacks");
+        list.add(hl + GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindBack.getKeyCode()) + rst + " key to clear the grid");
+        list.add(hl + GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindLeft.getKeyCode()) + rst + " and " + hl + GameSettings.getKeyDisplayString(Minecraft.getMinecraft().gameSettings.keyBindRight.getKeyCode()) + rst + " keys to spin");
 
         if (itemStack.getItemDamage() == 1)
             list.add(EnumChatFormatting.ITALIC + "Bendy");
