@@ -124,5 +124,8 @@ public class ItemIBench extends ItemCore {
         list.add(hl + fwd + rst + " key to balance stacks");
         list.add(hl + back + rst + " key to clear the grid");
         list.add(hl + left + rst + " and " + hl + right + rst + " keys to spin");
+
+        if (itemStack.getItemDamage() == 1)
+            list.add(EnumChatFormatting.ITALIC + "Bendy");
     }
 }
