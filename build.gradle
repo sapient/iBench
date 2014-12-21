@@ -25,7 +25,8 @@ repositories {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.4"
+version = "1.7.10-1.0.5"
+
 group= "com.sapient.ibench" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ibench"
 
