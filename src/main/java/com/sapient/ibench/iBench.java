@@ -23,6 +23,8 @@ import net.minecraft.item.Item;
         dependencies = "after:NotEnoughItems")
 public class iBench {
 
+    @SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.SERVER_PROXY)
+    public static IProxy proxy;
 
     public static final CreativeTabs creativeTab = new CreativeTabs(Reference.MOD_NAME) {
         @Override
@@ -35,14 +37,10 @@ public class iBench {
     public static iBench instance;
 
 
-    @SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.SERVER_PROXY)
-    public static IProxy proxy;
-
-
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         PacketHandler.init();
-
+        proxy.init();
         ModItems.init();
         ModBlocks.init();
     }

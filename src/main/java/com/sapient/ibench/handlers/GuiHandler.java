@@ -4,6 +4,7 @@ import com.sapient.ibench.client.gui.inventory.iBenchGui;
 import com.sapient.ibench.inventory.iBenchContainer;
 import com.sapient.ibench.inventory.InventoryIBench;
 import com.sapient.ibench.reference.GUIs;
+import com.sapient.ibench.util.IBenchHelper;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -23,7 +24,7 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == GUIs.IBENCH.ordinal()) {
-            return new iBenchContainer(player, new InventoryIBench(player, player.getHeldItem()));
+            return new iBenchContainer(player, new InventoryIBench(player, IBenchHelper.getIBench(player)));
         }
         return null;
     }
@@ -44,7 +45,7 @@ public class GuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == GUIs.IBENCH.ordinal()) {
-            return new iBenchGui(new iBenchContainer(player, new InventoryIBench(player, player.getHeldItem())));
+            return new iBenchGui(new iBenchContainer(player, new InventoryIBench(player, IBenchHelper.getIBench(player))));
         }
         return null;
     }

@@ -10,3 +10,6 @@ itemGroup.ibench=iBench
 
 # Misc stuff
 crafting.iBench=iBench
+
+# Keybindings
+key.open_ibench.desc=Open iBench

@@ -10,6 +10,10 @@ public class Names {
     public static class Containers {
     }
 
+    public static class Keys {
+        public static final String OPEN_IBENCH = "Open iBench";
+    }
+
     public static class NBT {
         public static final String MOST_SIG_UUID = "MostSigUUID";
         public static final String LEAST_SIG_UUID = "LeastSigUUID";
