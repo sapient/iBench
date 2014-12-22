@@ -1,11 +1,14 @@
 package com.sapient.ibench.network.message;
 
+import com.sapient.ibench.iBench;
 import com.sapient.ibench.inventory.iBenchContainer;
+import com.sapient.ibench.reference.GUIs;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class iBenchMessage implements IMessage {
 
@@ -15,6 +18,7 @@ public class iBenchMessage implements IMessage {
     public static final int SPIN_MATRIX = 2;
     public static final int BALANCE_MATRIX = 3;
     public static final int SPIN_MATRIX_LEFT = 4;
+    public static final int OPEN_IBENCH = 5;
 
     // MUST ALWAYS HAVE DEFAULT CONSTUCTOR OR WE WILL CRASH, IDIOT!
     public iBenchMessage() { }
@@ -55,19 +59,27 @@ public class iBenchMessage implements IMessage {
          */
         @Override
         public IMessage onMessage(iBenchMessage message, MessageContext ctx) {
-            iBenchContainer container = (iBenchContainer)ctx.getServerHandler().playerEntity.openContainer;
+            iBenchContainer container;
             switch (message.action) {
                 case iBenchMessage.BALANCE_MATRIX:
+                    container = (iBenchContainer)ctx.getServerHandler().playerEntity.openContainer;
                     container.balanceMatrix();
                     break;
                 case iBenchMessage.SPIN_MATRIX:
+                    container = (iBenchContainer)ctx.getServerHandler().playerEntity.openContainer;
                     container.spinMatrix();
                     break;
                 case iBenchMessage.SPIN_MATRIX_LEFT:
+                    container = (iBenchContainer)ctx.getServerHandler().playerEntity.openContainer;
                     container.spinMatrix(true);
                     break;
                 case iBenchMessage.CLEAR_MATRIX:
+                    container = (iBenchContainer)ctx.getServerHandler().playerEntity.openContainer;
                     container.clearMatrix();
+                    break;
+                case iBenchMessage.OPEN_IBENCH:
+                    EntityPlayer player = ctx.getServerHandler().playerEntity;
+                    player.openGui(iBench.instance, GUIs.IBENCH.ordinal(), player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
                     break;
             }
 

@@ -1,6 +1,9 @@
 package com.sapient.ibench.handlers;
 
 import com.sapient.ibench.iBench;
+import com.sapient.ibench.network.PacketHandler;
+import com.sapient.ibench.network.message.iBenchMessage;
+import com.sapient.ibench.reference.GUIs;
 import com.sapient.ibench.reference.Keybindings;
 import com.sapient.ibench.util.IBenchHelper;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -26,7 +29,8 @@ public class KeyInputEventHandler {
             EntityPlayer player = FMLClientHandler.instance().getClientPlayerEntity();
 
             if (IBenchHelper.getIBench(player) != null) {
-                player.openGui(iBench.instance, 0, player.getEntityWorld(), (int)player.posX, (int)player.posY, (int)player.posZ);
+                player.openGui(iBench.instance, GUIs.IBENCH.ordinal(), player.getEntityWorld(), (int)player.posX, (int)player.posY, (int)player.posZ);
+                PacketHandler.INSTANCE.sendToServer(new iBenchMessage(iBenchMessage.OPEN_IBENCH));
             }
         }
     }
