@@ -3,6 +3,7 @@ package com.sapient.ibench.inventory;
 import com.sapient.ibench.items.ItemIBench;
 import com.sapient.ibench.util.NBTHelper;
 import com.sapient.ibench.util.StackHelper;
+import cpw.mods.fml.common.Optional;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -12,6 +13,7 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
+@Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class iBenchContainer extends Container {
 
     private final EntityPlayer player;
@@ -243,4 +245,6 @@ public class iBenchContainer extends Container {
             transferStackInSlot(player, i);
         }
     }
+
+
 }
