@@ -27,7 +27,7 @@ public class iBenchGui extends GuiContainer {
         super(container);
         this.player = container.getPlayer();
         this.container = container;
-        xSize = 176;
+        xSize = 201;
         ySize = 166;
     }
 
@@ -35,7 +35,7 @@ public class iBenchGui extends GuiContainer {
     public void initGui() {
         super.initGui();
 
-        int xStart = (width - xSize) / 2;
+        int xStart = ((width - xSize) / 2) + 12;
         int yStart = (height - ySize) / 2;
 
         this.buttonList.add(this.balanceButton = new iBenchButton(1, xStart + 10, yStart + 16, 11, 16, iBenchButton.BALANCE));
@@ -46,7 +46,7 @@ public class iBenchGui extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int x, int y) {
-        fontRendererObj.drawString(StatCollector.translateToLocal("crafting.iBench"), 29, 6, 0x202020);
+        fontRendererObj.drawString(StatCollector.translateToLocal("crafting.iBench"), 41, 6, 0x202020);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class iBenchGui extends GuiContainer {
 
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
-        this.drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
+        this.drawTexturedModalRect(xStart + 12, yStart, 0, 0, xSize, ySize);
     }
 
     /**
