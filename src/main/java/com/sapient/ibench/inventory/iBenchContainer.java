@@ -142,11 +142,6 @@ public class iBenchContainer extends Container {
                 }
             }
 
-            // Cant shift click into trash
-            else if (slotIndex == 47) {
-                return null;
-            }
-
             // So at this point, itemstack1 only contains items which could not fit when moved
             if (itemStack1.stackSize == 0) {
                 // Empty the from slot if all the items were moved out
@@ -250,6 +245,4 @@ public class iBenchContainer extends Container {
             transferStackInSlot(player, i);
         }
     }
-
-
 }

@@ -24,7 +24,7 @@ public class iBenchStackPositioner implements IStackPositioner {
             }
 
             for (PositionedStack stack : stacks) {
-                stack.relx += 5;
+                stack.relx += 17;
                 stack.rely += 11;
             }
         }

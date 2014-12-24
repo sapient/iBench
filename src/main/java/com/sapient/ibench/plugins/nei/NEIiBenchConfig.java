@@ -13,7 +13,7 @@ public class NEIiBenchConfig implements IConfigureNEI {
         API.registerGuiOverlay(iBenchGui.class, "crafting", new iBenchStackPositioner());
 
         // Handles putting real items into the inventory
-        API.registerGuiOverlayHandler(iBenchGui.class, new DefaultOverlayHandler(), "crafting");
+        API.registerGuiOverlayHandler(iBenchGui.class, new DefaultOverlayHandler(17, 11), "crafting");
     }
 
     @Override
