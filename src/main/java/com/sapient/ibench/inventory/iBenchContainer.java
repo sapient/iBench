@@ -4,6 +4,11 @@ import com.sapient.ibench.items.ItemIBench;
 import com.sapient.ibench.util.NBTHelper;
 import com.sapient.ibench.util.StackHelper;
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import invtweaks.api.container.ContainerSection;
+import invtweaks.api.container.ContainerSectionCallback;
+import invtweaks.api.container.InventoryContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -12,8 +17,12 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
+@InventoryContainer
+@Optional.Interface(iface = "codechicken.nei.invtweaks.INEIGuiHandler", modid = "NotEnoughItems")
 public class iBenchContainer extends Container {
 
     private final EntityPlayer player;
@@ -244,5 +253,13 @@ public class iBenchContainer extends Container {
         for (int i = 1; i <= 9; i++) {
             transferStackInSlot(player, i);
         }
+    }
+
+    @ContainerSectionCallback
+    @SideOnly(Side.CLIENT)
+    public Map<ContainerSection, List<Slot>> getContainerSections() {
+        HashMap<ContainerSection, List<Slot>> map = new HashMap<ContainerSection, List<Slot>>();
+        map.put(ContainerSection.INVENTORY, inventorySlots.subList(10, 46));
+        return map;
     }
 }
