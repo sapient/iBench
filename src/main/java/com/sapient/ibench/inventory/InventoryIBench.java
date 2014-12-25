@@ -77,7 +77,10 @@ public class InventoryIBench extends InventoryCrafting {
      */
     @Override
     public ItemStack getStackInSlot(int slotIndex) {
-        return inventory[slotIndex];
+        if (slotIndex < inventory.length)
+            return inventory[slotIndex];
+
+        return null;
     }
 
     /**
