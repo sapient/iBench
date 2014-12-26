@@ -27,6 +27,7 @@ public class InventoryIBench extends InventoryCrafting {
     // This class gets instantiated when we right click a clipboard. Called from the GuiHandler
     public InventoryIBench(EntityPlayer player, ItemStack itemStack) {
         super(null, 3, 3);
+
         this.parent = itemStack;
         this.player = player;
 
@@ -190,7 +191,7 @@ public class InventoryIBench extends InventoryCrafting {
             for (int i = 0; i < entityPlayer.inventory.getSizeInventory(); i++) {
                 ItemStack itemStack = entityPlayer.inventory.getStackInSlot(i);
 
-                if (NBTHelper.hasUUID(itemStack)) {
+                if (itemStack != null && itemStack.getItem() instanceof ItemIBench && NBTHelper.hasUUID(itemStack)) {
                     if (itemStack.getTagCompound().getLong(Names.NBT.MOST_SIG_UUID) == parentUUID.getMostSignificantBits() &&
                             itemStack.getTagCompound().getLong(Names.NBT.LEAST_SIG_UUID) == parentUUID.getLeastSignificantBits()) {
                         return itemStack;
@@ -204,7 +205,10 @@ public class InventoryIBench extends InventoryCrafting {
 
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         parent = findParentItemStack(player);
+
         if (parent != null) {
+
+
             nbtTagCompound = parent.getTagCompound();
 
             if (nbtTagCompound != null && nbtTagCompound.hasKey("Items")) {

@@ -17,17 +17,24 @@ public class IBenchHelper {
     }
 
     public static ItemStack getIBench(EntityPlayer player) {
+        ItemStack iBench = null;
+
         if (player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemIBench) {
-            return player.getHeldItem();
+            iBench = player.getHeldItem();
         }
 
         for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
             ItemStack stack = player.inventory.getStackInSlot(i);
 
             if (stack != null && stack.getItem() != null && stack.getItem() instanceof ItemIBench) {
-                return player.inventory.getStackInSlot(i);
+                iBench = player.inventory.getStackInSlot(i);
             }
         }
-        return null;
+
+        if (!player.worldObj.isRemote && iBench != null) {
+            NBTHelper.setUUID(iBench);
+        }
+
+        return iBench;
     }
 }
