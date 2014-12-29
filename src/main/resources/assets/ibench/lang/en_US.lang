@@ -6,7 +6,7 @@ item.ibench:crafting_core.name=Crafting Core
 item.ibench:crafting_core_plus.name=Crafting Core Plus
 
 # Creative tab Localization
-itemGroup.ibench=iBench
+itemGroup.iBench=iBench
 
 # Misc stuff
 crafting.iBench=iBench
