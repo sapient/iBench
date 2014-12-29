@@ -21,15 +21,16 @@ public class IBenchHelper {
 
         if (player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemIBench) {
             iBench = player.getHeldItem();
-        }
+        } else {
+            for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+                ItemStack stack = player.inventory.getStackInSlot(i);
 
-        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-            ItemStack stack = player.inventory.getStackInSlot(i);
-
-            if (stack != null && stack.getItem() != null && stack.getItem() instanceof ItemIBench) {
-                iBench = player.inventory.getStackInSlot(i);
+                if (stack != null && stack.getItem() != null && stack.getItem() instanceof ItemIBench) {
+                    iBench = player.inventory.getStackInSlot(i);
+                }
             }
         }
+
 
         if (!player.worldObj.isRemote && iBench != null) {
             NBTHelper.setUUID(iBench);
